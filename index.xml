@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Bravoooooooo</title><link>https://binary0208.github.io/</link><description>Recent content on Bravoooooooo</description><generator>Hugo</generator><language>zh-CN</language><lastBuildDate>Mon, 16 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://binary0208.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Python装饰器</title><link>https://binary0208.github.io/posts/2022/05/python%E8%A3%85%E9%A5%B0%E5%99%A8/</link><pubDate>Mon, 16 May 2022 00:00:00 +0000</pubDate><guid>https://binary0208.github.io/posts/2022/05/python%E8%A3%85%E9%A5%B0%E5%99%A8/</guid><description>&lt;h2 id="装饰器">装饰器&lt;/h2>
+&lt;p>一开始接触Python的装饰器，以为他跟Java的注解很像，但实际上他们两个完全不一样，Python的装饰器实际上就是一个函数，参数是函数，返回值也是函数，本质上就是个语法糖。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">timer&lt;/span>(func):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">wrapper&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time_start &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> func()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time_end &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Time cost = &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>time_end &lt;span style="color:#f92672">-&lt;/span> time_start&lt;span style="color:#e6db74">:&lt;/span>&lt;span style="color:#e6db74">.3f&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">s&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> wrapper
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@timer&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">say_hello&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time&lt;span style="color:#f92672">.&lt;/span>sleep(&lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;hello&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>say_hello()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>hello
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Time cost &lt;span style="color:#f92672">=&lt;/span> 3.000s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>以上写法等同于以下写法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> time
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">timer&lt;/span>(func):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">wrapper&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time_start &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> func()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time_end &lt;span style="color:#f92672">=&lt;/span> time&lt;span style="color:#f92672">.&lt;/span>time()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Time cost = &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>time_end &lt;span style="color:#f92672">-&lt;/span> time_start&lt;span style="color:#e6db74">:&lt;/span>&lt;span style="color:#e6db74">.3f&lt;/span>&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">s&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> wrapper
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">say_hello&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> time&lt;span style="color:#f92672">.&lt;/span>sleep(&lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;hello&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>timer(say_hello)()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果&lt;/p></description></item><item><title>JavaScript异步编程——ES6的Promise相较于传统callback的优点</title><link>https://binary0208.github.io/posts/2022/03/javascript%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8Bes6%E7%9A%84promise%E7%9B%B8%E8%BE%83%E4%BA%8E%E4%BC%A0%E7%BB%9Fcallback%E7%9A%84%E4%BC%98%E7%82%B9/</link><pubDate>Mon, 21 Mar 2022 00:00:00 +0000</pubDate><guid>https://binary0208.github.io/posts/2022/03/javascript%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8Bes6%E7%9A%84promise%E7%9B%B8%E8%BE%83%E4%BA%8E%E4%BC%A0%E7%BB%9Fcallback%E7%9A%84%E4%BC%98%E7%82%B9/</guid><description>&lt;h2 id="回调地狱">回调地狱&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;1号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}, &lt;span style="color:#ae81ff">3000&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;2号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}, &lt;span style="color:#ae81ff">1500&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;3号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}, &lt;span style="color:#ae81ff">5000&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>2号任务
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>1号任务
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3号任务
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>现有一需求，要求完成1号任务之后，再完成2号任务，最后在完成3号任务，就得将代码改成下面这样&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;1号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;2号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">setTimeout&lt;/span>(() =&amp;gt; {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#a6e22e">console&lt;/span>.&lt;span style="color:#a6e22e">log&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;3号任务&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#ae81ff">5000&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }, &lt;span style="color:#ae81ff">1500&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}, &lt;span style="color:#ae81ff">3000&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行结果&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>1号任务
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2号任务
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3号任务
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>可以看到代码有很多层嵌套，如果有很多任务，就得一直嵌套下去，这就是所谓的回调地狱，后期代码维护起来很麻烦&lt;/p></description></item><item><title>我的世界1.18.1Paper服务端开服</title><link>https://binary0208.github.io/posts/2022/02/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C1.18.1paper%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E6%9C%8D/</link><pubDate>Mon, 28 Feb 2022 00:00:00 +0000</pubDate><guid>https://binary0208.github.io/posts/2022/02/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C1.18.1paper%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E6%9C%8D/</guid><description>&lt;h2 id="前置要求">前置要求&lt;/h2>
+&lt;ul>
+&lt;li>公网IP&lt;/li>
+&lt;li>域名&lt;/li>
+&lt;li>有DDNS功能的路由器&lt;/li>
+&lt;li>Java17&lt;/li>
+&lt;/ul>
+&lt;h2 id="开服">开服&lt;/h2>
+&lt;ol>
+&lt;li>
+&lt;p>先到路由器进行设置，设置路由器的DDNS解析&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>然后端口转发25565内外部端口到运行服务器的那台电脑的IP地址&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>到paper官网下载最新的服务端&lt;a href="https://papermc.io/downloads">下载地址&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>之后cd到文件所在目录，运行以下指令就可以开服了&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>java -Xms4G -Xmx4G -jar paper-###.jar --nogui
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>同意ELUA协议之后，再次运行上面的指令&lt;/p>
+&lt;p>如果是盗版服务器，server.properties里的online-mode改为false&lt;/p></description></item><item><title>记录一下小米AX3600刷机OpenWrt固件</title><link>https://binary0208.github.io/posts/2022/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%B0%8F%E7%B1%B3ax3600%E5%88%B7%E6%9C%BAopenwrt%E5%9B%BA%E4%BB%B6/</link><pubDate>Thu, 24 Feb 2022 00:00:00 +0000</pubDate><guid>https://binary0208.github.io/posts/2022/02/%E8%AE%B0%E5%BD%95%E4%B8%80%E4%B8%8B%E5%B0%8F%E7%B1%B3ax3600%E5%88%B7%E6%9C%BAopenwrt%E5%9B%BA%E4%BB%B6/</guid><description>&lt;p>记录一下自己刷机路由器固件，中途过程比较坎坷。&lt;/p>
+&lt;p>本次记录使用的所有工具和文件&lt;a href="https://wwt.lanzoum.com/iCcsK01slxxc">下载地址&lt;/a>&lt;/p>
+&lt;h2 id="开启ax3600的ssh">开启AX3600的SSH&lt;/h2>
+&lt;ul>
+&lt;li>AX3600在固件版本为1.0.17的时候才能够开启SSH，首先得将路由器降级到1.0.17&lt;/li>
+&lt;li>复制路由器后台网址中的”STOK=“的后面的数据备用&lt;/li>
+&lt;/ul>
+&lt;ol>
+&lt;li>
+&lt;p>获取SSH权限：&lt;/p>
+&lt;pre tabindex="0">&lt;code>http://192.168.31.1/cgi-bin/luci/;stok=将之前保存的stok后面的数据粘贴过来替换/api/misystem/set_config_iotdev?bssid=Xiaomi&amp;amp;user_id=longdike&amp;amp;ssid=-h%3B%20nvram%20set%20ssh_en%3D1%3B%20nvram%20commit%3B%20sed%20-i%20&amp;#39;s%2Fchannel%3D.*%2Fchannel%3D%5C%22debug%5C%22%2Fg&amp;#39;%20%2Fetc%2Finit.d%2Fdropbear%3B%20%2Fetc%2Finit.d%2Fdropbear%20start%3B
+&lt;/code>&lt;/pre>&lt;p>复制到浏览器打开，如果显示&lt;code>{&amp;quot;code&amp;quot;:0}&lt;/code>，就说明成功了&lt;/p></description></item></channel></rss>

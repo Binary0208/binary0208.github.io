@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>服务端 on Bravoooooooo</title>
+    <link>http://localhost:1313/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF/</link>
+    <description>Recent content in 服务端 on Bravoooooooo</description>
+    <generator>Hugo</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Mon, 28 Feb 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>我的世界1.18.1Paper服务端开服</title>
+      <link>http://localhost:1313/posts/2022/02/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C1.18.1paper%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E6%9C%8D/</link>
+      <pubDate>Mon, 28 Feb 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/2022/02/%E6%88%91%E7%9A%84%E4%B8%96%E7%95%8C1.18.1paper%E6%9C%8D%E5%8A%A1%E7%AB%AF%E5%BC%80%E6%9C%8D/</guid>
+      <description>&lt;h2 id=&#34;前置要求&#34;&gt;前置要求&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;公网IP&lt;/li&gt;&#xA;&lt;li&gt;域名&lt;/li&gt;&#xA;&lt;li&gt;有DDNS功能的路由器&lt;/li&gt;&#xA;&lt;li&gt;Java17&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;开服&#34;&gt;开服&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;先到路由器进行设置，设置路由器的DDNS解析&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;然后端口转发25565内外部端口到运行服务器的那台电脑的IP地址&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;到paper官网下载最新的服务端&lt;a href=&#34;https://papermc.io/downloads&#34;&gt;下载地址&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;之后cd到文件所在目录，运行以下指令就可以开服了&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;java -Xms4G -Xmx4G -jar paper-###.jar --nogui&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同意ELUA协议之后，再次运行上面的指令&lt;/p&gt;&#xA;&lt;p&gt;如果是盗版服务器，server.properties里的online-mode改为false&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;服务器插件下载网站&#34;&gt;服务器插件下载网站&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.mcbbs.net/forum-servermod-1.html&#34;&gt;mcbbs&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.spigotmc.org/resources/categories/spigot.4/&#34;&gt;Spigot&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.curseforge.com/minecraft/bukkit-plugins&#34;&gt;Bukkit&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+  </channel>
+</rss>
